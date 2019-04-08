@@ -1,4 +1,4 @@
-package src;
+package src.hw5.order;
 
 public class OrderGenerator {
 
