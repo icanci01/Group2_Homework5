@@ -2,8 +2,9 @@ package hw5.delivery;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.Scanner;
-
 public class OrderDelivery {
 
     /*
@@ -46,8 +47,15 @@ public class OrderDelivery {
 
         System.out.println(ordersInput.nextInt());
 
+        PrintWriter deliveryOutput = null;
+        try {
+            deliveryOutput = new PrintWriter(new FileOutputStream("hw5\\delivery\\deliveries.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-
+        assert deliveryOutput != null;
+        deliveryOutput.println("1000");
 
     }
 }
