@@ -1,5 +1,9 @@
 package hw5.delivery;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class OrderDelivery {
 
     /*
@@ -30,6 +34,19 @@ public class OrderDelivery {
             System.out.println("Program will exit...");
             System.exit(0);
         }
+        FileInputStream ordersFile;
+        Scanner ordersInput = null;
+        try {
+            ordersFile = new FileInputStream("hw5\\order\\orders.txt");
+            ordersInput = new Scanner(ordersFile);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+            System.exit(0);
+        }
+
+        System.out.println(ordersInput.nextInt());
+
+
 
 
     }
