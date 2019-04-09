@@ -1,4 +1,4 @@
-package hw5.menu.pitesSouvlakia;
+package hw5.menu;
 
 public class Pita {
     private int time;

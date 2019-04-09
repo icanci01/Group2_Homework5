@@ -1,4 +1,4 @@
-package hw5.menu.pitesSouvlakia;
+package hw5.menu.Smiles;
 
 public abstract class Smila {
     private int size;

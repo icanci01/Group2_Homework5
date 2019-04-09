@@ -1,4 +1,6 @@
-package hw5.menu.pitesSouvlakia;
+package hw5.menu.Smiles;
+
+import hw5.menu.Smiles.Smila;
 
 public class Pork extends Smila {
     public Pork(int size) {

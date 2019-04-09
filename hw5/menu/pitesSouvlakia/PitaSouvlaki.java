@@ -1,5 +1,7 @@
 package hw5.menu.pitesSouvlakia;
 
+import hw5.menu.Smiles.Smila;
+import hw5.menu.Pita;
 public class PitaSouvlaki {
     private Smila a;
     private Smila b;
