@@ -57,5 +57,7 @@ public class OrderDelivery {
         assert deliveryOutput != null;
         deliveryOutput.println("1000");
 
+        System.out.println("TESTING");
+
     }
 }
