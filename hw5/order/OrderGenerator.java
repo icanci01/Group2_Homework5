@@ -4,17 +4,24 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
 
-	import java.io.BufferedWriter;
-	import java.io.File;
-	import java.io.FileWriter;
-	import java.io.IOException;
-	import java.util.Random;
-	public class OrderGenerator {
+public class OrderGenerator {
 
 		public String[][] generatePites(int n) {
 			String[][] pites = new String[4][n]; 
-			
+			int fullNumOfPies=0;
+			double a = Math.random()*100;
+			if (a<20) {
+				
+			}
+			else if () {
+				
+			}
 			
 			
 			
@@ -69,8 +76,8 @@ import java.io.PrintWriter;
 			writer.write(n + "\n");
 
 			for (int i = 0; i < n; i++) {
-				writer.write(i);
-
+				writer.write(i + " ");
+				
 			}
 
 		}
@@ -85,7 +92,7 @@ import java.io.PrintWriter;
 
         assert orderOutput != null;
         orderOutput.println("1000");
-        orderOutput.println("<1  75, 105, 1, 0, 0, 0, 1>");
+        orderOutput.println("<1 75, 105, 1, 0, 0, 0, 1>");
 
         orderOutput.close();
     }

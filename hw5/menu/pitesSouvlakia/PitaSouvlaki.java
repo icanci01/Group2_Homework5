@@ -24,7 +24,7 @@ public class PitaSouvlaki {
     @Override
     public String toString() {
         String s = "";
-        s += this.a.getType() + this.b.getType();
+        s += this.a.getType(). + this.b.getType();
         return s;
     }
 
