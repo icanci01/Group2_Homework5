@@ -1,7 +1,7 @@
 package hw5.menu.pitesSouvlakia;
 
-import hw5.menu.Smiles.Smila;
 import hw5.menu.Pita;
+import hw5.menu.Smiles.Smila;
 public class PitaSouvlaki {
     private Smila a;
     private Smila b;
@@ -24,7 +24,7 @@ public class PitaSouvlaki {
     @Override
     public String toString() {
         String s = "";
-        s += this.a.getType(). + this.b.getType();
+        s += this.a.getType() + this.b.getType();
         return s;
     }
 

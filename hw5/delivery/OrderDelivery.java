@@ -5,21 +5,20 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
 public class OrderDelivery {
 
-    /*
-         Το  πρόγραμμα  σας OrderDelivery δέχεται σαν παραμέτρουςτην χωρητικότητα
-         της φουκούς (Μ)και το χρόνο προετοιμασίας των κάρβουνων (Τ),
-         τον αριθμό των τηγανιών (Ν)και της χωρητικότητας τους (C)
-         καθώς και το χώρο που καταλαμβάνουν οι σμίλες (x,y) και οι πίττες (z).
-         java OrderDelivery 400 45 10 4 3 6 12 2 Θα ξεκινήσει το πρόγραμμα με
-         μια φουκού μήκους 400 εκατοστώνπου χρειάζεται 45 λεπτά για να ανάψει,
-         10 τηγάνια που χωρούν 4 μερίδες, σμίλες σουβλάκι των 3 εκατοστών,
-         σμίλες  σεφταλιά  των  6  εκατοστών,πίττες  των  12  εκατοστών και
-         κάνοντας χρήση του αλγόριθμού 2.
-         */
     public static void main(String[] args) {
 
+        /*
+        First of all we have to initialize the parameters used for the OrderDelivery
+        from the command line.
+        In case there are not enough parameters given, the program will exit.
+        Also in case we give more parameters, an error message saying "Please check your parameters"
+        will be shown and the program will also exit.
+        If all parameters are correct then the program will move on creating the List of Orders from
+        the "orders.txt" file.
+         */
         try {
             int M = Integer.parseInt(args[0]); //xwritikotita tis foukous
             int T = Integer.parseInt(args[1]); //xronos proetimasias karvounwn
@@ -35,6 +34,13 @@ public class OrderDelivery {
             System.out.println("Program will exit...");
             System.exit(0);
         }
+
+        if (args.length > 8) {
+            System.out.println("Please check your parameters!");
+            System.out.println("Program will exit...");
+            System.exit(0);
+        }
+
         FileInputStream ordersFile;
         Scanner ordersInput = null;
         try {
