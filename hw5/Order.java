@@ -1,4 +1,4 @@
-package hw5.order;
+package hw5;
 
 import hw5.menu.Fries;
 import hw5.menu.pitesSouvlakia.ChickenPitaSouvlaki;
