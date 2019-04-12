@@ -8,7 +8,6 @@ import hw5.menu.pitesSouvlakia.SheftaliaPitaSouvlaki;
 
 public class Order {
 
-    private static int counter = 0;
     private int idNum = 0;
     private int tOrder;
     private int tRequested;
@@ -18,8 +17,8 @@ public class Order {
     private MixPitaSouvlaki[] mixPites;
     private Fries[] fries;
 
-    public Order(int tOrder, int tRequested, int numberPorkPites, int numberChickenPites, int numberSheftaliaPites, int numberMixPites, int numberFries) {
-        idNum = ++counter;
+    public Order(int individualOrderID, int tOrder, int tRequested, int numberPorkPites, int numberChickenPites, int numberSheftaliaPites, int numberMixPites, int numberFries) {
+        idNum = individualOrderID;
         this.tOrder = tOrder;
         this.tRequested = tRequested;
 
