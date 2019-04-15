@@ -1,5 +1,8 @@
 package hw5;
 
+import hw5.algorithms.Algorithm1;
+import hw5.algorithms.Algorithm2;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -69,6 +72,27 @@ public class OrderDelivery {
         the program will continue with creating the list of Orders from the "orders.txt".
         */
         ArrayList<Order> ordersList = makeListOfOrders();
+
+        switch (algorithmUsed) {
+            case 1:
+                Algorithm1.useArlgorithm1(ordersList);
+                break;
+
+
+            case 2:
+                Algorithm2.useArlgorithm2(ordersList);
+
+                break;
+
+            case 3:
+                Algorithm2.useArlgorithm1(ordersList);
+                break;
+            case 4:
+
+                break;
+
+
+        }
 
 //        for (int i = 0; i < ordersList.length; i++)
 //            System.out.println(ordersList[i]);

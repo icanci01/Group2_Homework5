@@ -90,9 +90,16 @@ public class Order implements Comparable {
     	return b;
     	
     }
-   
 
-	@Override
+    public int getIdNum() {
+        return idNum;
+    }
+
+    public int gettOrder() {
+        return tOrder;
+    }
+
+    @Override
 	public int compareTo(Object arg0) {		
 		int compareage=((Order)arg0).tOrder;
 	       
