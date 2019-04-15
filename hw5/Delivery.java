@@ -1,49 +1,33 @@
 package hw5;
 
 public class Delivery {
-    private int id;
-    private int timeOfOrder;
-    private int timeOfDelivery;
-    private int timeOdDelivered;
-    private int timeDelay;
+
+    private int idNum;
+    private int tOrder;
+    private int tRequested;
+    private int tDelivered;
+    private int tDelay;
     private int numberOfPites;
     private int numberOfFries;
 
-    public Delivery(int id, int timeOfOrder, int timeOfDelivery, int timeOdDelivered, int numberOfPites, int numberOfFries) {
-        this.id = id;
-        this.timeOfOrder = timeOfOrder;
-        this.timeOfDelivery = timeOfDelivery;
-        this.timeOdDelivered = timeOdDelivered;
-        this.numberOfPites = this.numberOfPites;
+    public Delivery(int idOfOrder, int timeOfOrder, int timeRequested, int timeDelivered, int numberOfPites, int numberOfFries) {
+        this.idNum = idOfOrder;
+        this.tOrder = timeOfOrder;
+        this.tRequested = timeRequested;
+        this.tDelivered = timeDelivered;
+        this.tDelay = timeDelivered - timeRequested;
+        this.numberOfPites = numberOfPites;
         this.numberOfFries = numberOfFries;
-        this.timeDelay = timeOdDelivered - timeOfDelivery;
     }
 
-    public int getId() {
-        return id;
+    public int gettDelay() {
+        return tDelay;
     }
 
-    public int getNumberOfFries() {
-        return numberOfFries;
-    }
-
-    public int getNumberOfPites() {
-        return numberOfPites;
-    }
-
-    public int getTimeDelay() {
-        return timeDelay;
-    }
-
-    public int getTimeOdDelivered() {
-        return timeOdDelivered;
-    }
-
-    public int getTimeOfDelivery() {
-        return timeOfDelivery;
-    }
-
-    public int getTimeOfOrder() {
-        return timeOfOrder;
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(this.idNum + " " + this.tOrder + " " + this.tDelivered + " " + this.tDelay + " " + this.numberOfPites + " " + this.numberOfFries);
+        return str.toString();
     }
 }

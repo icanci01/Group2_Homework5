@@ -92,6 +92,7 @@ public class OrderGenerator {
         return s;
     }
 
+
     public static int[] generateWantedTime(int[] order, int[][] pites) {
         int[] req = new int[order.length];
         Random r = new Random();
@@ -102,7 +103,7 @@ public class OrderGenerator {
                 do {
                     time = (int) (Math.random() * 150 + 30) + (order[i]);
 
-                } while (time < (order[i]) + 60);
+                } while (time > 360 || time < (order[i]) + 60);
 
             req[i] = (time);
         }
@@ -133,7 +134,7 @@ public class OrderGenerator {
         
 
         for (int i = 0; i < n; i++) {
-        	orders.add(new Order(i,orde[i],req[i],pites[i][0],pites[i][1],pites[i][2],pites[i][3],pites[i][4]));
+            orders.add(new Order((i + 1), orde[i], req[i], pites[i][0], pites[i][1], pites[i][2], pites[i][3], pites[i][4]));
         	
         }
         Collections.sort(orders);

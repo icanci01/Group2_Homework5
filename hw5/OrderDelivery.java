@@ -2,9 +2,13 @@ package hw5;
 
 import hw5.algorithms.Algorithm1;
 import hw5.algorithms.Algorithm2;
+import hw5.algorithms.Algorithm3;
+import hw5.algorithms.Algorithm4;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -73,37 +77,35 @@ public class OrderDelivery {
         */
         ArrayList<Order> ordersList = makeListOfOrders();
 
+        /*
+        Now we are ready to use selected algorithm to create the list of the deliveries made
+        in order to process them for the output file "deliveries.txt"
+         */
+        ArrayList<Delivery> deliveryList = null;
         switch (algorithmUsed) {
             case 1:
-                Algorithm1.useArlgorithm1(ordersList);
+                deliveryList = Algorithm1.useArlgorithm1(ordersList);
                 break;
 
-
             case 2:
-                Algorithm2.useArlgorithm2(ordersList);
-
+                deliveryList = Algorithm2.useArlgorithm2(ordersList);
                 break;
 
             case 3:
-                Algorithm2.useArlgorithm1(ordersList);
+                deliveryList = Algorithm3.useArlgorithm3(ordersList);
                 break;
+
             case 4:
-
+                deliveryList = Algorithm4.useArlgorithm4(ordersList);
                 break;
-
-
         }
 
-//        for (int i = 0; i < ordersList.length; i++)
-//            System.out.println(ordersList[i]);
+        /*
+        At this point of the code we are ready to create the output file "deliveries.txt"
+        where we will save the deliveries made using the method makeOutputFile
+        */
+        makeOutputFile(ordersList.size(), deliveryList);
 
-
-//        PrintWriter deliveryOutput = null;
-//        try {
-//            deliveryOutput = new PrintWriter(new FileOutputStream("hw5\\delivery\\deliveries.txt"));
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
     }
 
     private static ArrayList<Order> makeListOfOrders() {
@@ -165,5 +167,54 @@ public class OrderDelivery {
         }
         ordersInput.close();
         return listOfOrders;
+    }
+
+    private static void makeOutputFile(int totalNumberOfOrders, ArrayList<Delivery> deliveryList) {
+        /*
+        First we create the output stream for the output file "deliveries.txt"
+         */
+        PrintWriter deliveryOutput = null;
+        try {
+            deliveryOutput = new PrintWriter(new FileOutputStream("deliveries.txt"));
+        } catch (FileNotFoundException e) {
+            System.out.println("FATAL ERROR");
+            System.exit(0);
+        }
+
+        // Print the total number of orders
+        deliveryOutput.print(totalNumberOfOrders + " ");
+
+        /*
+        We need to create the average typical time
+         */
+        //
+        //
+        //
+        deliveryOutput.print(22.54 + " ");
+        //
+        //
+        //
+
+        /*
+        We need the number of pleased customers
+         */
+        int countPleasedCustomers = 0;
+        for (int i = 0; i < deliveryList.size(); i++) {
+            if (deliveryList.get(i).gettDelay() <= 0)
+                countPleasedCustomers++;
+        }
+
+        deliveryOutput.println(countPleasedCustomers);
+
+        /*
+        Here we are ready to print the data from the deliveryList
+         */
+
+        for (int i = 0; i < deliveryList.size(); i++) {
+            deliveryOutput.println(deliveryList.get(i));
+        }
+
+        deliveryOutput.flush();
+        deliveryOutput.close();
     }
 }
