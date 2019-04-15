@@ -110,6 +110,7 @@ public class OrderGenerator {
     }
 
     public static void main(String[] args) throws IOException {
+        System.out.println("testing");
         int n = 0;
         try {
             n = Integer.parseInt(args[0]);

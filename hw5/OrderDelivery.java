@@ -48,7 +48,6 @@ public class OrderDelivery {
             System.err.println(e2.getLocalizedMessage());
             System.out.println("Program will exit...");
             System.exit(0);
-
         }
 
         if (args.length > 8) {
