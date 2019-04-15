@@ -11,6 +11,14 @@ public abstract class Smila {
         this.type = type;
     }
 
+    public boolean equals(Smila a) {
+        if (this.getClass() == a.getClass())
+            if (this.getType() == a.getType())
+                return true;
+            else return false;
+        return false;
+    }
+
     public String getType() {
         return type;
     }

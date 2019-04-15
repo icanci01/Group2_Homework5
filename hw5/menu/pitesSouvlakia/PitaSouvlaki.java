@@ -21,13 +21,23 @@ public class PitaSouvlaki {
         return b;
     }
 
-    @Override
     public String toString() {
         String s = "";
-        s += this.a.getType() + this.b.getType();
+        if (this.a.equals(this.b))
+            s += "2 " + this.a.getType();
+        else
+            s += "1 " + this.a.getType() + " and 1 " + this.b.getType();
         return s;
     }
 
+    public boolean equals(PitaSouvlaki pita) {
+        if (this.getClass() == pita.getClass())
+            if (this.a.getType() == pita.a.getType() && this.b.getType() == pita.b.getType())
+                return true;
+            else
+                return false;
+        return false;
+    }
     public static void main(String[] args) {
         System.out.println("Testing");
     }
