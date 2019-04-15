@@ -1,15 +1,13 @@
 package hw5.menu.Smiles;
 
-import hw5.menu.Smiles.Smila;
-
 public class Chicken extends Smila {
 
 
     public Chicken(int size) {
-        super(size, timeRnadom(), "Chicken");
+        super(size, timeRandom(), "Chicken");
     }
 
-    private static int timeRnadom() {
+    private static int timeRandom() {
         int x = 15;
         x += Math.random() * 5;
         return x;
