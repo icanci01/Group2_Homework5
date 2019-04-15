@@ -24,9 +24,9 @@ public class PitaSouvlaki {
     public String toString() {
         String s = "";
         if (this.a.equals(this.b))
-            s += "2 " + this.a.getType();
+            s += "2 smiles " + this.a.getType();
         else
-            s += "1 " + this.a.getType() + " and 1 " + this.b.getType();
+            s += "1 smila" + this.a.getType() + " and 1 smila " + this.b.getType();
         return s;
     }
 
