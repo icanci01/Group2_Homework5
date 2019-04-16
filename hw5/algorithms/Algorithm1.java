@@ -33,6 +33,7 @@ public class Algorithm1 {
 
     public static int foukouDistribution(Order order, Foukou foukou) {
         int maxTime = 0;
+
         for (int i = 0; i < order.getPites().length; i++) {
             foukou.add(order.getPites()[i].getA());
             foukou.add(order.getPites()[i].getB());
@@ -41,7 +42,13 @@ public class Algorithm1 {
             if (maxTime < tempMax)
                 maxTime = tempMax;
         }
+        counter += maxTime;
+        for (int i = 0; i < order.getPites().length; i++) {
+            foukou.remove(order.getPites()[i].getA());
+            foukou.remove(order.getPites()[i].getB());
+            foukou.remove(order.getPites()[i].getP());
+        }
 
-        return maxTime;
+        return counter;
     }
 }

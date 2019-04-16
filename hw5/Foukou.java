@@ -20,11 +20,14 @@ public class Foukou {
     public void add(Ingedients item) {
         if (this.isFull())
             System.out.println("Foukou is full");
-        else
+        else {
             foukou.add(item);
+            usedSpace = usedSpace + item.getSize();
+        }
     }
 
     public void remove(Ingedients item) {
+        usedSpace = usedSpace - item.getSize();
         foukou.remove(item);
     }
 

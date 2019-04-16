@@ -18,7 +18,7 @@ public class OrderDelivery {
 
         /*
         First of all we have to initialize the parameters used for the OrderDelivery
-        given within the command line.
+        given wit int sizeChickenPork, int sizeSheftalia, int sizePitahin the command line.
 
         Cases where the program might terminate with an error message :
              1) Any of the arguments given are either equal to 0 or a negative number.
@@ -75,7 +75,7 @@ public class OrderDelivery {
         At this point of the code if all parameters given within the command line are correct,
         the program will continue with creating the list of Orders from the "orders.txt".
         */
-        ArrayList<Order> ordersList = makeListOfOrders();
+        ArrayList<Order> ordersList = makeListOfOrders(x, y, z);
 
         /*
         Now we are ready to use selected algorithm to create the list of the deliveries made
@@ -108,7 +108,7 @@ public class OrderDelivery {
 
     }
 
-    private static ArrayList<Order> makeListOfOrders() {
+    private static ArrayList<Order> makeListOfOrders(int x, int y, int z) {
         /*
         Create the stream for the input file "orders.txt".
         In case the file doesn't exist, the program will terminate with an error message.
@@ -159,7 +159,7 @@ public class OrderDelivery {
                 }
                 System.out.println();
 
-                listOfOrders.add(new Order(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
+                listOfOrders.add(new Order(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], x, y, z));
             } else if (orderAsIndividualData.length < 8) {
                 System.err.println("Order with num " + i + " contains less parameters!");
             } else
@@ -190,7 +190,10 @@ public class OrderDelivery {
         //
         //
         //
-        deliveryOutput.print(22.54 + " ");
+        int sum = 0;
+        for (int i = 0; i < deliveryList.size(); i++)
+            sum += deliveryList.get(i).gettDelay();
+        deliveryOutput.print(sum / totalNumberOfOrders + " ");
         //
         //
         //
@@ -199,8 +202,8 @@ public class OrderDelivery {
         We need the number of pleased customers
          */
         int countPleasedCustomers = 0;
-        for (int i = 0; i < deliveryList.size(); i++) {
-            if (deliveryList.get(i).gettDelay() <= 0)
+        for (int j = 0; j < deliveryList.size(); j++) {
+            if (deliveryList.get(j).gettDelay() <= 0)
                 countPleasedCustomers++;
         }
 
@@ -217,4 +220,5 @@ public class OrderDelivery {
         deliveryOutput.flush();
         deliveryOutput.close();
     }
+
 }
