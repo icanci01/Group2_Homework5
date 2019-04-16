@@ -87,6 +87,8 @@ public class OrderGenerator {
         for (int i = 0; i < n; i++) {
 
             int time = (int) (r.nextGaussian() * 60 + 180);
+            if (time > 300)
+                time = 300;
             s[i] = (time);
         }
         return s;
@@ -104,6 +106,9 @@ public class OrderGenerator {
                     time = (int) (Math.random() * 150 + 30) + (order[i]);
 
                 } while (time > 360 || time < (order[i]) + 60);
+
+            if (time > 360)
+                time = 360;
 
             req[i] = (time);
         }

@@ -1,11 +1,12 @@
 package hw5.menu;
 
-public class Pita {
-    private int time;
-    private int size;
+import hw5.menu.Smiles.Ingedients;
+
+public class Pita extends Ingedients {
 
     public Pita(int size) {
-        this.size = size;
-        this.time = 5;
+        super(size, 5);
     }
+
+
 }

@@ -84,7 +84,7 @@ public class OrderDelivery {
         ArrayList<Delivery> deliveryList = null;
         switch (algorithmUsed) {
             case 1:
-                deliveryList = Algorithm1.useArlgorithm1(ordersList);
+                deliveryList = Algorithm1.useArlgorithm1(ordersList, M, T, N, C);
                 break;
 
             case 2:
