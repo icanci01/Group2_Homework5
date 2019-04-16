@@ -1,6 +1,8 @@
 package hw5;
 
 import hw5.menu.Fries;
+import hw5.menu.Pita;
+import hw5.menu.Smiles.Chicken;
 import hw5.menu.pitesSouvlakia.ChickenPitaSouvlaki;
 import hw5.menu.pitesSouvlakia.MixPitaSouvlaki;
 import hw5.menu.pitesSouvlakia.PorkPitaSouvlaki;
@@ -37,6 +39,34 @@ public class Order implements Comparable {
 
     }
 
+    public int getNumberOfPites() {
+        return this.chickenPites.length + this.porkPites.length + this.mixPites.length + this.sheftaliaPites.length;
+    }
+
+    public int getNumberOfFries() {
+        return this.fries.length;
+    }
+
+    public ChickenPitaSouvlaki[] getChickenPites() {
+        return chickenPites;
+    }
+
+    public PorkPitaSouvlaki[] getPorkPites() {
+        return porkPites;
+    }
+
+    public MixPitaSouvlaki[] getMixPites() {
+        return mixPites;
+    }
+
+    public SheftaliaPitaSouvlaki[] getSheftaliaPites() {
+        return sheftaliaPites;
+    }
+
+    public Fries[] getFries() {
+        return fries;
+    }
+
     private PorkPitaSouvlaki[] generatePorkPites(int totalNumberOfPites) {
         PorkPitaSouvlaki[] pork = new PorkPitaSouvlaki[totalNumberOfPites];
 
@@ -46,6 +76,8 @@ public class Order implements Comparable {
     private ChickenPitaSouvlaki[] generateChickenPites(int totalNumberOfPites) {
         ChickenPitaSouvlaki[] chicken = new ChickenPitaSouvlaki[totalNumberOfPites];
 
+        for (int i = 0; i < chicken.length; i++)
+            chicken[i] = new ChickenPitaSouvlaki(new Chicken(5), new Chicken(5), new Pita(4));
         return chicken;
     }
 

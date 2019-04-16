@@ -10,7 +10,9 @@ public class Delivery {
     private int numberOfPites;
     private int numberOfFries;
 
-    public Delivery(int idOfOrder, int timeOfOrder, int timeRequested, int timeDelivered, int numberOfPites, int numberOfFries) {
+    public Delivery(int idOfOrder, int timeOfOrder,
+                    int timeRequested, int timeDelivered,
+                    int numberOfPites, int numberOfFries) {
         this.idNum = idOfOrder;
         this.tOrder = timeOfOrder;
         this.tRequested = timeRequested;

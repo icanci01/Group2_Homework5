@@ -6,6 +6,7 @@ public class PitaSouvlaki {
     private Smila a;
     private Smila b;
     private Pita p;
+    private boolean done;
 
     public PitaSouvlaki(Smila a, Smila b, Pita p) {
         this.a = a;
@@ -13,6 +14,9 @@ public class PitaSouvlaki {
         this.p = p;
     }
 
+    public int getLength() {
+        return this.a.getSize() + this.b.getSize() + this.p.getSize();
+    }
     public Smila getA() {
         return a;
     }
@@ -30,12 +34,14 @@ public class PitaSouvlaki {
         return s;
     }
 
+    public boolean isDone() {
+        return (this.a.done && this.b.done && this.p.done);
+
+    }
+
     public boolean equals(PitaSouvlaki pita) {
         if (this.getClass() == pita.getClass())
-            if (this.a.getType() == pita.a.getType() && this.b.getType() == pita.b.getType())
-                return true;
-            else
-                return false;
+            return this.a.getType() == pita.a.getType() && this.b.getType() == pita.b.getType();
         return false;
     }
     public static void main(String[] args) {
