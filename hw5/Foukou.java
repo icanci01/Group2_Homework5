@@ -26,6 +26,9 @@ public class Foukou {
         }
     }
 
+    public int psise(Ingedients item) {
+        return item.psise();
+    }
     public void remove(Ingedients item) {
         usedSpace = usedSpace - item.getSize();
         foukou.remove(item);
