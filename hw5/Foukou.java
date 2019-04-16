@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Foukou {
 
+    public static int counter = -30;
     private int capacity;
     private int usedSpace;
     private ArrayList<Ingedients> foukou;
@@ -52,5 +53,54 @@ public class Foukou {
 
     public int getLeftSpace() {
         return capacity - usedSpace;
+    }
+
+    public static int foukouDistribution(Order order, Foukou foukou) {
+        int maxTime = 0;
+
+        for (int i = 0; i < order.getPites().length; i++) {
+            if (!foukou.isFull()) {
+                foukou.add(order.getPites()[i].getA());
+                order.getPites()[i].getA().psise();
+                foukou.add(order.getPites()[i].getB());
+                order.getPites()[i].getB().psise();
+                foukou.add(order.getPites()[i].getP());
+                order.getPites()[i].getP().psise();
+                int tempMax = Math.max(order.getPites()[i].getA().psise(), order.getPites()[i].getB().psise());
+                if (maxTime < tempMax)
+                    maxTime = tempMax;
+            } else {
+                counter += maxTime;
+                for (int j = 0; j < order.getPites().length; j++) {
+                    if (order.getPites()[j].getA().done)
+                        foukou.remove(order.getPites()[j].getA());
+                    if (order.getPites()[j].getP().done)
+                        foukou.remove(order.getPites()[j].getB());
+                    if (order.getPites()[j].getP().done)
+                        foukou.remove(order.getPites()[j].getP());
+                    for (int k = i; k < order.getPites().length; k++) {
+                        foukou.add(order.getPites()[k].getA());
+                        order.getPites()[i].getA().psise();
+                        foukou.add(order.getPites()[k].getB());
+                        order.getPites()[i].getB().psise();
+                        foukou.add(order.getPites()[k].getP());
+                        order.getPites()[i].getP().psise();
+                        int tempMax = Math.max(order.getPites()[i].getA().psise(), order.getPites()[i].getB().psise());
+                        if (maxTime < tempMax)
+                            maxTime = tempMax;
+                    }
+                }
+            }
+        }
+
+        counter += maxTime;
+        for (int i = 0; i < order.getPites().length; i++) {
+            foukou.remove(order.getPites()[i].getA());
+            foukou.remove(order.getPites()[i].getB());
+            foukou.remove(order.getPites()[i].getP());
+        }
+
+
+        return counter;
     }
 }
