@@ -3,7 +3,6 @@ package hw5.algorithms;
 import hw5.Delivery;
 import hw5.Foukou;
 import hw5.Order;
-import hw5.menu.Pita;
 
 import java.util.ArrayList;
 
@@ -33,29 +32,16 @@ public class Algorithm1 {
     }
 
     public static int foukouDistribution(Order order, Foukou foukou) {
-        for (int i = 0; i < order.getChickenPites().length; i++) {
-            foukou.add(order.getChickenPites()[i].getA());
-            foukou.add(order.getChickenPites()[i].getB());
-            foukou.add(new Pita(5));
-        }
-        for (int i = 0; i < order. ().length; i++){
-            foukou.add(order.getChickenPites()[i].getA());
-            foukou.add(order.getChickenPites()[i].getB());
-            foukou.add(new Pita(5));
-        }
-        for (int i = 0; i < order.getChickenPites().length; i++) {
-            foukou.add(order.getChickenPites()[i].getA());
-            foukou.add(order.getChickenPites()[i].getB());
-            foukou.add(new Pita(5));
-        }
-        for (int i = 0; i < order.getChickenPites().length; i++) {
-            foukou.add(order.getChickenPites()[i].getA());
-            foukou.add(order.getChickenPites()[i].getB());
-            foukou.add(new Pita(5));
+        int maxTime = 0;
+        for (int i = 0; i < order.getPites().length; i++) {
+            foukou.add(order.getPites()[i].getA());
+            foukou.add(order.getPites()[i].getB());
+            foukou.add(order.getPites()[i].getP());
+            int tempMax = Math.max(order.getPites()[i].getA().getTime(), order.getPites()[i].getB().getTime());
+            if (maxTime < tempMax)
+                maxTime = tempMax;
         }
 
-
-        int timeneed = 0;
-        return timeneed;
+        return maxTime;
     }
 }

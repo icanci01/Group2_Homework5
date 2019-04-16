@@ -3,10 +3,7 @@ package hw5;
 import hw5.menu.Fries;
 import hw5.menu.Pita;
 import hw5.menu.Smiles.Chicken;
-import hw5.menu.pitesSouvlakia.ChickenPitaSouvlaki;
-import hw5.menu.pitesSouvlakia.MixPitaSouvlaki;
-import hw5.menu.pitesSouvlakia.PorkPitaSouvlaki;
-import hw5.menu.pitesSouvlakia.SheftaliaPitaSouvlaki;
+import hw5.menu.pitesSouvlakia.*;
 
 public class Order implements Comparable {
 
@@ -47,20 +44,12 @@ public class Order implements Comparable {
         return this.fries.length;
     }
 
-    public ChickenPitaSouvlaki[] getChickenPites() {
-        return chickenPites;
-    }
-
-    public PorkPitaSouvlaki[] getPorkPites() {
-        return porkPites;
-    }
-
-    public MixPitaSouvlaki[] getMixPites() {
-        return mixPites;
-    }
-
-    public SheftaliaPitaSouvlaki[] getSheftaliaPites() {
-        return sheftaliaPites;
+    public PitaSouvlaki[] getPites() {
+        int num = getNumberOfPites();
+        PitaSouvlaki[] pites = new PitaSouvlaki[num];
+        for (int i = 0; i < pites.length; i++)
+            pites[i] = new ChickenPitaSouvlaki(new Chicken(5), new Chicken(5), new Pita(4));
+        return pites;
     }
 
     public Fries[] getFries() {

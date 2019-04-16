@@ -39,6 +39,10 @@ public class PitaSouvlaki {
 
     }
 
+    public Pita getP() {
+        return p;
+    }
+
     public boolean equals(PitaSouvlaki pita) {
         if (this.getClass() == pita.getClass())
             return this.a.getType() == pita.a.getType() && this.b.getType() == pita.b.getType();
