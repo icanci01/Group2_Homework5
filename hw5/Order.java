@@ -1,26 +1,25 @@
 package hw5;
 
 import hw5.menu.Fries;
-import hw5.menu.pitesSouvlakia.ChickenPitaSouvlaki;
-import hw5.menu.pitesSouvlakia.MixPitaSouvlaki;
-import hw5.menu.pitesSouvlakia.PorkPitaSouvlaki;
-import hw5.menu.pitesSouvlakia.SheftaliaPitaSouvlaki;
+import hw5.menu.pitesSouvlakia.*;
 
 public class Order implements Comparable {
 
     private int idNum = 0;
     private int tOrder;
     private int tRequested;
+    private PitaSouvlaki[] pites;
     private PorkPitaSouvlaki[] porkPites;
     private ChickenPitaSouvlaki[] chickenPites;
-    private SheftaliaPitaSouvlaki[] sheftaliaPites;
     private MixPitaSouvlaki[] mixPites;
+    private SheftaliaPitaSouvlaki[] sheftaliaPites;
     private Fries[] fries;
 
-    public Order(int individualOrderID, int tOrder, int tRequested, int numberPorkPites, int numberChickenPites, int numberSheftaliaPites, int numberMixPites, int numberFries) {
+    public Order(int individualOrderID, int tOrder, int tRequested, int numberPorkPites, int numberChickenPites, int numberSheftaliaPites, int numberMixPites, int numberFries, int sizeChickenPork, int sizeSheftalia, int sizePita) {
         idNum = individualOrderID;
         this.tOrder = tOrder;
         this.tRequested = tRequested;
+        int total;
 
         try {
             if (numberPorkPites < 0 || numberChickenPites < 0 || numberSheftaliaPites < 0 || numberMixPites < 0 || numberFries < 0)
@@ -29,6 +28,8 @@ public class Order implements Comparable {
             chickenPites = generateChickenPites(numberChickenPites);
             sheftaliaPites = generateSheftaliaPites(numberSheftaliaPites);
             mixPites = generateMixPites(numberMixPites);
+            total = numberChickenPites + numberMixPites + numberPorkPites + numberSheftaliaPites;
+            pites = new PitaSouvlaki[total];
             fries = generateFries(numberFries);
         } catch (Exception e) {
             System.out.println("Error Occured, Order can't be created");
@@ -36,6 +37,7 @@ public class Order implements Comparable {
         }
 
     }
+
 
     private PorkPitaSouvlaki[] generatePorkPites(int totalNumberOfPites) {
         PorkPitaSouvlaki[] pork = new PorkPitaSouvlaki[totalNumberOfPites];
