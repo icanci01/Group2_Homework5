@@ -18,17 +18,19 @@ public class Foukou {
         foukou = new ArrayList<Ingedients>(capacity);
     }
 
-    public static int timeCaclculator(Order order, Foukou foukou, int i) {
+    public static int timeCaclculator(Order order, Foukou foukou) {
         int maxTime = 0;
-        foukou.add(order.getPites()[i].getA());
-        order.getPites()[i].getA().psise();
-        foukou.add(order.getPites()[i].getB());
-        order.getPites()[i].getB().psise();
-        foukou.add(order.getPites()[i].getP());
-        order.getPites()[i].getP().psise();
-        int tempMax = Math.max(order.getPites()[i].getA().psise(), order.getPites()[i].getB().psise());
-        if (maxTime < tempMax)
-            maxTime = tempMax;
+        for (int j = 0; j < order.getPites().length; j++) {
+            foukou.add(order.getPites()[j].getA());
+            order.getPites()[j].getA().psise();
+            foukou.add(order.getPites()[j].getB());
+            order.getPites()[j].getB().psise();
+            foukou.add(order.getPites()[j].getP());
+            order.getPites()[j].getP().psise();
+            int tempMax = Math.max(order.getPites()[j].getA().psise(), order.getPites()[j].getB().psise());
+            if (maxTime < tempMax)
+                maxTime = tempMax;
+        }
         return maxTime;
 
     }

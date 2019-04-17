@@ -92,7 +92,7 @@ public class OrderDelivery {
                 break;
 
             case 3:
-                deliveryList = Algorithm3.useArlgorithm3(ordersList);
+                deliveryList = Algorithm3.useArlgorithm3(ordersList, M, T, N, C);
                 break;
 
             case 4:
