@@ -88,7 +88,7 @@ public class OrderDelivery {
                 break;
 
             case 2:
-                deliveryList = Algorithm2.useArlgorithm2(ordersList);
+                deliveryList = Algorithm2.useArlgorithm2(ordersList, M, T, N, C);
                 break;
 
             case 3:

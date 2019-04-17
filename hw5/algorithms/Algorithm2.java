@@ -5,51 +5,42 @@ import hw5.Foukou;
 import hw5.Order;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class Algorithm2 {
 
-    public static ArrayList<Delivery> useArlgorithm2(ArrayList<Order> orders, int sizeFoukou, int xronoKarvouna, int numTigania, int tiganiaCapacity) {
-       int[] tNeeded = new int[orders.size()];
-       Foukou foukou = new Foukou(sizeFoukou);
+    public static ArrayList<Delivery> useArlgorithm2(ArrayList<Order> ordersList, int sizeFoukou, int xronoKarvouna, int numTigania, int tiganiaCapacity) {
+        int[] texec = new int[ordersList.size()];
+        Foukou foukou = new Foukou(sizeFoukou);
+        ArrayList<Delivery> deliveryList = new ArrayList<>(ordersList.size());
 
-        for(int i = 0 ; i < orders.size();i++){
-            tNeeded = Foukou.timeCaclculator(orders.get(i),foukou);
+        for (int i = 0; i < ordersList.size(); i++) {
+
+
+            for (int j = 0; j < ordersList.size(); j++)
+                texec[j] = Foukou.timeCaclculator(ordersList.get(j), foukou);
+
+
+            int minTExec = 0;
+            int position = 0;
+            for (int k = 0; k < texec.length; k++) {
+                if (texec[k] < minTExec) {
+                    minTExec = texec[k];
+                    position = k;
+                }
+            }
+
+            Order process = new Order(ordersList.get(position));
+            int tDelivered = Foukou.foukouDistribution(process, foukou);
+            deliveryList.add(new Delivery(process.getIdNum(), process.gettOrder(),
+                    process.gettRequested(), tDelivered, process.getNumberOfPites(), process.getNumberOfFries()));
+
+
+            texec[position] = Integer.MAX_VALUE;
 
 
         }
-
-
-       int[][] a = new int[orders.size()][2];
-       for (int i = 0;i<orders.size() ;i++){
-           int b = Foukou.timeCaclculator(orders.get(i),new Foukou(xronosKarvouna),i);
-          tNeeded.add(i,b);
-           a[i][0] = b;
-           a[i][1] = i;
-       }
-
-       tNeeded.sort(new Comparator<Integer>() {
-
-           @Override
-           public int compare(Integer o1, Integer o2) {
-               if(o1<o2)
-               return -1;
-               else if(o1>o2)
-                   return 1;
-               else
-                   return 0;
-           }
-
-       });
-
-        for (int i = 0;i<orders.size() ;i++){
-            tNeeded.add(i,Foukou.timeCaclculator(orders.get(i),new Foukou(xronosKarvouna),i));
-
-        }
-
-
-
+        System.out.println(deliveryList.size());
+        return deliveryList;
     }
+
 }

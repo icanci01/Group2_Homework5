@@ -12,7 +12,6 @@ public class Algorithm3 {
         int[] texec = new int[ordersList.size()];
         double[] w = new double[ordersList.size()];
         Foukou foukou = new Foukou(sizeFoukou);
-        System.out.println(w.length);
         ArrayList<Delivery> deliveryList = new ArrayList<>(ordersList.size());
 
         for (int i = 0; i < ordersList.size(); i++) {
