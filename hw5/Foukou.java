@@ -18,6 +18,20 @@ public class Foukou {
         foukou = new ArrayList<Ingedients>(capacity);
     }
 
+    public static int timeCaclculator(Order order, Foukou foukou, int i) {
+        int maxTime = 0;
+        foukou.add(order.getPites()[i].getA());
+        order.getPites()[i].getA().psise();
+        foukou.add(order.getPites()[i].getB());
+        order.getPites()[i].getB().psise();
+        foukou.add(order.getPites()[i].getP());
+        order.getPites()[i].getP().psise();
+        int tempMax = Math.max(order.getPites()[i].getA().psise(), order.getPites()[i].getB().psise());
+        if (maxTime < tempMax)
+            maxTime = tempMax;
+        return maxTime;
+
+    }
     public void add(Ingedients item) {
         if (this.isFull())
             System.out.println("Foukou is full");
@@ -102,5 +116,10 @@ public class Foukou {
 
 
         return counter;
+    }
+
+    public void clear() {
+        this.foukou.clear();
+        this.usedSpace = 0;
     }
 }
