@@ -4,6 +4,7 @@ import hw5.algorithms.Algorithm1;
 import hw5.algorithms.Algorithm2;
 import hw5.algorithms.Algorithm3;
 import hw5.algorithms.Algorithm4;
+import hw5.graphics.LineChartDelay;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -85,18 +86,22 @@ public class OrderDelivery {
         switch (algorithmUsed) {
             case 1:
                 deliveryList = Algorithm1.useArlgorithm1(ordersList, M, T, N, C);
+                LineChartDelay.drawDelay(deliveryList);
                 break;
 
             case 2:
                 deliveryList = Algorithm2.useArlgorithm2(ordersList, M, T, N, C);
+                LineChartDelay.drawDelay(deliveryList);
                 break;
 
             case 3:
                 deliveryList = Algorithm3.useArlgorithm3(ordersList, M, T, N, C);
+                LineChartDelay.drawDelay(deliveryList);
                 break;
 
             case 4:
                 deliveryList = Algorithm4.useArlgorithm4(ordersList);
+                LineChartDelay.drawDelay(deliveryList);
                 break;
         }
 
