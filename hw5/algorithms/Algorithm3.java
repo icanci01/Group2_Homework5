@@ -8,7 +8,11 @@ import java.util.ArrayList;
 public class Algorithm3 {
 
     public static ArrayList<Delivery> useArlgorithm3(ArrayList<Order> ordersList) {
-        return null;
+
+        for (int i = 0; i <3 ; i++) {
+            System.out.println("testing");
+        }
+
     }
 
 }
