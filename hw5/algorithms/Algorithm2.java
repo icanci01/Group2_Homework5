@@ -29,7 +29,7 @@ public class Algorithm2 {
                 texec[j] = Foukou.timeCaclculator(ordersList.get(j), foukou);
 
 
-            int minTExec = 0;
+            int minTExec = Integer.MAX_VALUE;
             int position = 0;
             for (int k = 0; k < texec.length; k++) {
                 if (texec[k] < minTExec) {
@@ -48,7 +48,6 @@ public class Algorithm2 {
 
 
         }
-        System.out.println(deliveryList.size());
         return deliveryList;
     }
 

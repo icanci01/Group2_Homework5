@@ -198,7 +198,13 @@ public class OrderGenerator {
             System.out.println("FATAL ERROR");
             System.exit(0);
         }
-        LineChartTimeOrder.drawDelay(orderList);
+        try {
+            LineChartTimeOrder.drawDelay(orderList);
+        } catch (RuntimeException e) {
+            System.out.println("Libraries weren't loaded");
+            System.exit(0);
+
+        }
 
         ordersOutput.println(numberOfOrders);
         Order[] finalOrders = orderList.toArray(new Order[numberOfOrders]);
