@@ -1,9 +1,6 @@
 package hw5;
 
 import hw5.algorithms.Algorithm1;
-import hw5.algorithms.Algorithm2;
-import hw5.algorithms.Algorithm3;
-import hw5.algorithms.Algorithm4;
 import hw5.graphics.LineChartDelay;
 
 import java.io.FileInputStream;
@@ -82,26 +79,31 @@ public class OrderDelivery {
         Now we are ready to use selected algorithm to create the list of the deliveries made
         in order to process them for the output file "deliveries.txt"
          */
+
+        Kitchen kithenProcess = new Kitchen(new Foukou(M), T, new Pan(C, N));
+
+
+
         ArrayList<Delivery> deliveryList = null;
         switch (algorithmUsed) {
             case 1:
-                deliveryList = Algorithm1.useArlgorithm1(ordersList, M, T, N, C);
+                deliveryList = Algorithm1.useArlgorithm1(ordersList, kithenProcess);
                 LineChartDelay.drawDelay(deliveryList);
                 break;
 
             case 2:
-                deliveryList = Algorithm2.useArlgorithm2(ordersList, M, T, N, C);
-                LineChartDelay.drawDelay(deliveryList);
+                //  deliveryList = Algorithm2.useArlgorithm2(ordersList, M, T, N, C);
+                //   LineChartDelay.drawDelay(deliveryList);
                 break;
 
             case 3:
-                deliveryList = Algorithm3.useArlgorithm3(ordersList, M, T, N, C);
-                LineChartDelay.drawDelay(deliveryList);
+                // deliveryList = Algorithm3.useArlgorithm3(ordersList, M, T, N, C);
+                // LineChartDelay.drawDelay(deliveryList);
                 break;
 
             case 4:
-                deliveryList = Algorithm4.useArlgorithm4(ordersList);
-                LineChartDelay.drawDelay(deliveryList);
+                // deliveryList = Algorithm4.useArlgorithm4(ordersList);
+                //  LineChartDelay.drawDelay(deliveryList);
                 break;
         }
 
@@ -208,7 +210,7 @@ public class OrderDelivery {
          */
         int countPleasedCustomers = 0;
         for (int j = 0; j < deliveryList.size(); j++) {
-            if (deliveryList.get(j).gettDelay() <= 0)
+            if (deliveryList.get(j).gettDelay() <= 0 && deliveryList.get(j).gettDelay() > -30)
                 countPleasedCustomers++;
         }
 

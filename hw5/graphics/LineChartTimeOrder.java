@@ -43,7 +43,12 @@ public class LineChartTimeOrder extends JFrame {
 
         XYSeries series = new XYSeries("orders");
         for(int i = 0;i<ordersList.size();i++) {
-            series.add(i+1, ordersList.get(i).gettOrder());
+            if (ordersList.get(i).gettOrder() < 180)
+                series.add(i+1, ordersList.get(i).gettOrder());
+            else {
+                series.add(i + 1, ordersList.get(i).gettOrder());
+
+            }
         }
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
@@ -67,7 +72,7 @@ public class LineChartTimeOrder extends JFrame {
         XYPlot plot = chart.getXYPlot();
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-        renderer.setSeriesPaint(0, Color.RED);
+        renderer.setSeriesPaint(0, Color.GREEN);
         renderer.setSeriesStroke(0, new BasicStroke(2.0f));
 
         plot.setRenderer(renderer);
