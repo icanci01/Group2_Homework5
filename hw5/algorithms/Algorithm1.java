@@ -13,7 +13,7 @@ public class Algorithm1 {
         ArrayList<Delivery> deliveryList = new ArrayList<>();
 
         //Since it is already time ordered we dont have to make any changes
-        int[] timeDelivered = workingKitchen.KitchenDistribution(ordersList);
+        int[] timeDelivered = workingKitchen.getFinalTime(ordersList);
 
         for (int i = 0; i < ordersList.size(); i++) {
             Order processingOrder = ordersList.get(i);

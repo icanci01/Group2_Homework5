@@ -72,4 +72,12 @@ public class Pan {
     public int getLeftSpace() {
         return capacity - usedSpace;
     }
+
+    public boolean itFits(Order order) {
+        return order.getFries().length <= this.capacity * this.numOfPans;
+    }
+
+    public int minTime(Order order) {
+        return order.getFries()[0].getTime();
+    }
 }

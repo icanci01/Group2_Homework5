@@ -65,7 +65,7 @@ public class Foukou {
     }
 
     public boolean isFull() {
-        return this.usedSpace == this.capacity;
+        return this.usedSpace < 3;
     }
 
     public int getLeftSpace() {

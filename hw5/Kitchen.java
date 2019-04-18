@@ -6,6 +6,7 @@ public class Kitchen {
     public static int counter = -30;
     private Foukou foukou;
     private Pan pan;
+    public static int processingId = 0;
 
 
     public Kitchen(Foukou foukou, int xronosKarvouna, Pan pan) {
@@ -18,25 +19,48 @@ public class Kitchen {
         }
     }
 
-    public int[] KitchenDistribution(ArrayList<Order> order) {
+    private void foukouAdder(ArrayList<Order> order) {
+        for (int j = 0; j < order.get(processingId).getSmiles().length; j++) {
+            foukou.add(order.get(processingId).getSmiles()[j]);
+            foukou.psise(order.get(processingId).getSmiles()[j]);
+            if (j % 2 == 0 && j > 0) {
+                foukou.add(order.get(processingId).getPites()[0].getP());
+                foukou.psise(order.get(processingId).getPites()[0].getP());
+            }
+            processingId++;
+        }
+    }
 
+    private int[] FoukouDistribution(ArrayList<Order> order) {
+        processingId = 0;
         int[] timeDelivered = new int[order.size()];
         int idKeep = 0;
-        int processingId = 0;
+
 
         do {
 
             for (int i = 0; i < order.size(); i++) {
-                if (foukou.itFits(order.get(i))) {
+                while (foukou.itFits(order.get(processingId))) {
+                    timeDelivered[processingId] = Foukou.timeCaclculator(order.get(processingId), foukou)
+                    this.foukouAdder(order);
+                    boolean cantAdd = false;
+                    int continueAdding = 0;
+
+                    while (!foukou.isFull() && continueAdding < order.get(processingId).getSmiles().length) {
+                        foukou.add(order.get(processingId).getSmiles()[continueAdding]);
+                        foukou.psise(order.get(processingId).getSmiles()[continueAdding]);
+                        continueAdding++;
+                        if (foukou.isFull()) {
+                            timeDelivered[processingId] =
+                        }
+
+                        if (foukou.isEmpty()) {
 
 
-                }
+                        }
 
 
-                for (int j = 0; j < order.get(processingId).getSmiles().length; j++)
-                    System.out.println(order.get(processingId).getSmiles()[j]);
-
-
+                    }
             }
 
 
@@ -47,7 +71,25 @@ public class Kitchen {
     }
 
     private boolean itFits(Order order) {
-        return foukou.itFits(order) && pan.
+            return foukou.itFits(order) && pan.itFits(order);
     }
+
+        private int[] PanDistribution (ArrayList < Order > order) {
+            processingId = 0;
+            return null;
+
+        }
+
+        public int[] getFinalTime (ArrayList < Order > order) {
+
+            int[] foukouTime = this.FoukouDistribution(order);
+            int[] friesTime = this.PanDistribution(order);
+
+            int[] finalTime = new int[order.size()];
+            for (int i = 0; i < order.size(); i++)
+                finalTime[i] = Math.max(foukouTime[i], friesTime[i]);
+
+            return finalTime;
+        }
 
 }
