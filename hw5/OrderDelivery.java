@@ -1,6 +1,9 @@
 package hw5;
 
 import hw5.algorithms.Algorithm1;
+import hw5.algorithms.Algorithm2;
+import hw5.algorithms.Algorithm3;
+import hw5.algorithms.Algorithm4;
 import hw5.graphics.LineChartDelay;
 
 import java.io.FileInputStream;
@@ -79,31 +82,26 @@ public class OrderDelivery {
         Now we are ready to use selected algorithm to create the list of the deliveries made
         in order to process them for the output file "deliveries.txt"
          */
-
-        Kitchen kithenProcess = new Kitchen(new Foukou(M), T, new Pan(C, N));
-
-
-
         ArrayList<Delivery> deliveryList = null;
         switch (algorithmUsed) {
             case 1:
-                deliveryList = Algorithm1.useArlgorithm1(ordersList, kithenProcess);
+                deliveryList = Algorithm1.useArlgorithm1(ordersList, M, T, N, C);
                 LineChartDelay.drawDelay(deliveryList);
                 break;
 
             case 2:
-                //  deliveryList = Algorithm2.useArlgorithm2(ordersList, M, T, N, C);
-                //   LineChartDelay.drawDelay(deliveryList);
+                deliveryList = Algorithm2.useArlgorithm2(ordersList, M, T, N, C);
+                LineChartDelay.drawDelay(deliveryList);
                 break;
 
             case 3:
-                // deliveryList = Algorithm3.useArlgorithm3(ordersList, M, T, N, C);
-                // LineChartDelay.drawDelay(deliveryList);
+                deliveryList = Algorithm3.useArlgorithm3(ordersList, M, T, N, C);
+                LineChartDelay.drawDelay(deliveryList);
                 break;
 
             case 4:
-                // deliveryList = Algorithm4.useArlgorithm4(ordersList);
-                //  LineChartDelay.drawDelay(deliveryList);
+                deliveryList = Algorithm4.useArlgorithm4(ordersList, M, T, N, C);
+                LineChartDelay.drawDelay(deliveryList);
                 break;
         }
 
@@ -128,16 +126,6 @@ public class OrderDelivery {
             System.out.println("Program will exit...");
             System.exit(0);
         }
-
-        // STILL NEEDS EXCEPTION HANDLING
-        // IF orders.txt contains negatives
-        // If orders.txt contains characters / strings
-        // If orders.txt torder > 300 ( order made after 23:00 )
-        // If orders.txt treq > 360 ( order expected after 24:00 )
-        //  ||
-        // \  /
-        //  \/
-
 
         /*
         Get the total number of orders from first the first line of "orders.txt"
@@ -192,19 +180,13 @@ public class OrderDelivery {
         deliveryOutput.print(totalNumberOfOrders + " ");
 
         /*
-        We need to create the average typical time
+        We need to create the average time
          */
-        //
-        //
-        //
+
         int sum = 0;
         for (int i = 0; i < deliveryList.size(); i++)
             sum += deliveryList.get(i).gettDelay();
         deliveryOutput.print(sum / totalNumberOfOrders + " ");
-        //
-        //
-        //
-
         /*
         We need the number of pleased customers
          */
